@@ -60,6 +60,7 @@ Jointly optimize three objectives to make queries language‑relevant:
 
 ## Formal Pseudocode
 
+```python
 # Notation:
 #   E_img: frozen image encoder (ViT)
 #   Q: Q‑Former (trainable)
@@ -81,9 +82,10 @@ for image, text in D_image_text:
     V_prompt = P(Z)                   # project to LLM embedding size
     loss = LM_loss(LLM(prompt=V_prompt, text=text))  # or PrefixLM for encoder‑decoder
     update(Q, P)                      # only Q‑Former + projection are updated
+```               # only Q‑Former + projection are updated
 
 
-** Method
+** Method**
 - The BLIP-2 framework, short for Bootstrapping Language-Image Pre-training 2, introduces an efficient approach for aligning vision and language without the need for end-to-end training of massive multimodal models. Instead of jointly training an image encoder and a language model from scratch, BLIP-2 leverages two powerful pre-trained unimodal components: a frozen image encoder (such as CLIP ViT-L/14 or EVA-CLIP ViT-g/14) and a frozen large language model (LLM) such as OPT or FlanT5. Between these two frozen modules lies the only trainable component — the Querying Transformer (Q-Former) — which serves as a lightweight bridge that learns how to translate visual representations into language-understandable embeddings.
 
 The training of BLIP-2 proceeds in two stages, each targeting a distinct aspect of cross-modal alignment.
@@ -161,36 +163,15 @@ pip install -U transformers accelerate pillow safetensors
 
 ---
 ## Citations
-@misc{lavis2023blip2,
-  title        = {BLIP-2 in LAVIS: Bootstrapping Language-Image Pre-training Implementation},
-  author       = {Salesforce Research},
-  howpublished = {\url{https://github.com/salesforce/LAVIS/tree/main/projects/blip2}},
-  year         = {2023},
-  note         = {Accessed: 2025-11-11}
-}
+1. Li, J., Li, D., Savarese, S., & Hoi, S. (2023). BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models. arXiv preprint arXiv:2301.12597
 
-@misc{huggingface2023flant5xl,
-  title        = {Salesforce BLIP-2 Flan-T5 XL Model Card},
-  author       = {Salesforce Research and Hugging Face},
-  howpublished = {\url{https://huggingface.co/Salesforce/blip2-flan-t5-xl}},
-  year         = {2023},
-  note         = {Accessed: 2025-11-11}
-}
+2. Salesforce Research. (2023). BLIP-2 in LAVIS: Bootstrapping Language-Image Pre-training Implementation. Available at: https://github.com/salesforce/LAVIS/tree/main/projects/blip2
 
-@misc{huggingface2023opt27b,
-  title        = {Salesforce BLIP-2 OPT 2.7B Model Card},
-  author       = {Salesforce Research and Hugging Face},
-  howpublished = {\url{https://huggingface.co/Salesforce/blip2-opt-2.7b}},
-  year         = {2023},
-  note         = {Accessed: 2025-11-11}
-}
+3. Salesforce Research & Hugging Face. (2023). BLIP-2 Flan-T5 XL Model Card. Available at: https://huggingface.co/Salesforce/blip2-flan-t5-xl
 
-@misc{colab2023blip2tutorial,
-  title        = {BLIP-2 Captioning Tutorial (Colab)},
-  author       = {Salesforce Research Community},
-  howpublished = {\url{https://colab.research.google.com/github/salesforce/LAVIS/blob/main/docs/source/tutorials/BLIP2_captioning.ipynb}},
-  year         = {2023},
-  note         = {Accessed: 2025-11-11}
-}
+4. Salesforce Research & Hugging Face. (2023). BLIP-2 OPT 2.7B Model Card. Available at: https://huggingface.co/Salesforce/blip2-opt-2.7b
+
+5.Salesforce Research Community. (2023). BLIP-2 Captioning Tutorial (Colab). Available at: https://colab.research.google.com/github/salesforce/LAVIS/blob/main/docs/source/tutorials/BLIP2_captioning.ipynb
+
 
 ---
