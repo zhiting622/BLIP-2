@@ -85,7 +85,7 @@ for image, text in D_image_text:
 ```            
 
 
-** Method**
+### Method
 - The BLIP-2 framework, short for Bootstrapping Language-Image Pre-training 2, introduces an efficient approach for aligning vision and language without the need for end-to-end training of massive multimodal models. Instead of jointly training an image encoder and a language model from scratch, BLIP-2 leverages two powerful pre-trained unimodal components: a frozen image encoder (such as CLIP ViT-L/14 or EVA-CLIP ViT-g/14) and a frozen large language model (LLM) such as OPT or FlanT5. Between these two frozen modules lies the only trainable component — the Querying Transformer (Q-Former) — which serves as a lightweight bridge that learns how to translate visual representations into language-understandable embeddings.
 
 The training of BLIP-2 proceeds in two stages, each targeting a distinct aspect of cross-modal alignment.
