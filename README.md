@@ -82,7 +82,7 @@ for image, text in D_image_text:
     V_prompt = P(Z)                   # project to LLM embedding size
     loss = LM_loss(LLM(prompt=V_prompt, text=text))  # or PrefixLM for encoder‑decoder
     update(Q, P)                      # only Q‑Former + projection are updated
-```               # only Q‑Former + projection are updated
+```            
 
 
 ** Method**
