@@ -41,7 +41,7 @@ Why do you think BLIP-2 keeps both the image encoder and the language model froz
 ## Architecture (High‑Level)
 
 
-![BLIP-2 Overview](./images/blip2.PNG)
+![BLIP-2 Overview](./blip2.PNG)
 
 
 ## Two‑Stage Pretraining
